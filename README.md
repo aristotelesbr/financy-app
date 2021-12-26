@@ -1,4 +1,5 @@
 # Financy App
+[![Clojure CI](https://github.com/aristotelesbr/financy-app/actions/workflows/clojure.yml/badge.svg)](https://github.com/aristotelesbr/financy-app/actions/workflows/clojure.yml)
 
 ## Prerequisites
 
