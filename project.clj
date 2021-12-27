@@ -16,4 +16,4 @@
                         [clj-http "3.9.1"]]
          :plugins [[lein-midje "3.2.1"]
                    [lein-cloverage "1.0.13"]]}}
-  :test-paths ["test/unit" "test/acceptance"])
+  :test-paths ["test/unit" "test/acceptance" "test/support"])
