@@ -10,6 +10,8 @@
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.2"]
-                        [midje "1.9.6"]]
+                        [midje "1.9.6"]
+                        [ring/ring-core	"1.7.1"]
+                        [ring/ring-jetty-adapter	"1.7.1"]]
          :plugins [[lein-midje "3.2.1"]
                    [lein-cloverage "1.0.13"]]}})
