@@ -1,5 +1,5 @@
 (ns financy.handler
-  (:require [compojure.core :refer :all]
+  (:require [compojure.core :refer [GET defroutes]]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
