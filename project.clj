@@ -13,7 +13,8 @@
                         [midje "1.9.6"]
                         [ring/ring-core "1.7.1"]
                         [ring/ring-jetty-adapter "1.7.1"]
-                        [clj-http "3.9.1"]]
+                        [clj-http "3.9.1"]
+                        [cheshire "5.8.1"]]
          :plugins [[lein-midje "3.2.1"]
                    [lein-cloverage "1.0.13"]]}}
   :test-paths ["test/unit" "test/acceptance" "test/support"])

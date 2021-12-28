@@ -2,7 +2,8 @@
   (:require [midje.sweet :refer [fact against-background]]
             [server-helper :refer [start-server stop-server content default-port]]
             [midje.parsing.arrow-symbols :refer [=>]]
-            [midje.parsing.1-to-explicit-form.parse-background :refer [before after]]))
+            [midje.parsing.1-to-explicit-form.parse-background :refer [before after]]
+            [cheshire.core :as json]))
 
 (fact "start and stop server" :acceptance
       (start-server 3001)
@@ -10,6 +11,6 @@
 
 (against-background
  [(before :facts (start-server default-port)) (after :facts (stop-server))]
- (fact "initial balance must be equal 0" :acceptance
-       (content "/balance") => "0"
+ (fact "initial balance must be 0" :acceptance
+       (json/parse-string (content "/balance") true) => {:balance 0}
        (stop-server)))
