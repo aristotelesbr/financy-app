@@ -1,9 +1,10 @@
 (ns financy.balance-test
   (:require [midje.sweet :refer [fact against-background]]
-            [server-helper :refer [start-server stop-server content default-port]]
+            [server-helper :refer [start-server stop-server content default-port url-for]]
             [midje.parsing.arrow-symbols :refer [=>]]
             [midje.parsing.1-to-explicit-form.parse-background :refer [before after]]
-            [cheshire.core :as json]))
+            [cheshire.core :as json]
+            [clj-http.client :as http]))
 
 (fact "start and stop server" :acceptance
       (start-server 3001)
@@ -12,5 +13,10 @@
 (against-background
  [(before :facts (start-server default-port)) (after :facts (stop-server))]
  (fact "initial balance must be 0" :acceptance
-       (json/parse-string (content "/balance") true) => {:balance 0}
-       (stop-server)))
+       (json/parse-string (content "/balance") true) => {:balance 0})
+
+ (fact "balancy is 10 when a transaction is 10" :acceptance
+       (http/post (url-for "/transactions")
+                  {:body (json/generate-string {:value 10 :type "input"})})
+       (json/parse-string (content "/balance") true) => {:balance 10}))
+
