@@ -17,6 +17,7 @@
 
  (fact "balancy is 10 when a transaction is 10" :acceptance
        (http/post (url-for "/transactions")
-                  {:body (json/generate-string {:value 10 :type "input"})})
+                  {:content-type :json
+                   :body (json/generate-string {:value 10 :type "input"})})
        (json/parse-string (content "/balance") true) => {:balance 10}))
 
