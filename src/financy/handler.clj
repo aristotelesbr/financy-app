@@ -14,7 +14,7 @@
 
 (defroutes app-routes
   (GET "/" [] "Hello World")
-  (GET "/balance" [] (as-json {:balance 0}))
+  (GET "/balance" [] (as-json {:balance (db/balance)}))
   (POST "/transactions" request (-> (db/create-balance (:body request))
                                     (as-json 201)))
   (route/not-found "Not Found"))
